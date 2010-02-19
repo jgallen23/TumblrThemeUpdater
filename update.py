@@ -27,7 +27,7 @@ def update_theme(email, password, blog_name, file_path):
     login_req = urllib2.Request(login_url, urllib.urlencode(login_post_data))
     urllib2.urlopen(login_req).read()
 
-    dashboard_req = urllib2.Request("http://www.tumblr.com/customize/jgatesting")
+    dashboard_req = urllib2.Request("http://www.tumblr.com/customize/%s", blog_name)
     custom_html = urllib2.urlopen(dashboard_req).read()
 
     form_key = re.compile("form_key.*?value=\"(.*?)\"").findall(custom_html)[0]
